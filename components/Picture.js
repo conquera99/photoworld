@@ -43,7 +43,7 @@ export default class Picture extends Component {
                     <Head>
                         <title>{image.pic_title}</title>
                         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
-                        <link rel="icon" href="/logo.jpg" />
+                        <link rel="icon" href="/logo.png" />
 
                         <meta charSet="UTF-8"/>
                         <meta name="description" content="Conquera99 Photoworld, welcome to my website, enjoy all the images, I hope it can give you a stories that can be remembered forever."/>
@@ -53,7 +53,7 @@ export default class Picture extends Component {
                     </Head>
                 }
 
-                <div style={{width: standalone ? 500 : "100%", height: 'auto', margin: '0 auto'}}>
+                <div className="picture-hover" style={{width: standalone ? 500 : "100%", height: 'auto', margin: '0 auto'}}>
                     {image && (
                         <LazyLoadImage
                             key={image.pic_id}
@@ -77,6 +77,7 @@ export default class Picture extends Component {
                         </div>
                         <div className="pic-captions-content">
                             <h3>{image.pic_title}</h3>
+                            <h4>{image.pic_category_name}</h4>
                             <h5>{image.pic_desc}</h5>
                             <h6>Upload At: {moment(image.pic_create_date).format('DD MMM YYYY HH:mm:ss')}</h6>
                         </div>

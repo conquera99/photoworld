@@ -8,7 +8,7 @@ export default function AdminContainer({children}) {
       <Head>
         <title>Admin</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
-        <link rel="icon" href="/logo.jpg" />
+        <link rel="icon" href="/logo.png" />
         
         <meta charSet="UTF-8"/>
         <meta name="description" content="Conquera99 Photoworld, welcome to my website, enjoy all the images, I hope it can give you a stories that can be remembered forever."/>
