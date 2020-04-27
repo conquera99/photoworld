@@ -10,7 +10,7 @@ export default function Auth() {
     const token = cookie.load(tokenName);
 
     if(token) {
-        Router.push("/Admin/dashboard");
+        Router.push('/Admin/[id]', '/Admin/dashboard');
     }
 
     const doLogin = (values) => {
@@ -18,7 +18,7 @@ export default function Auth() {
 
         authenticate(values.username, values.password).then(response => {
             cookie.save(tokenName, response.token, {path: '/'});
-            Router.push('/Admin/dashboard');
+            Router.push('/Admin/[id]', '/Admin/dashboard');
         });
     }
 
