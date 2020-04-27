@@ -88,12 +88,13 @@ export default class Home extends Component {
                                             <LazyLoadImage
                                                 key={item.pic_id}
                                                 style={{ width: "100%", marginBottom: 20 }}
-                                                delayTime={50}
+                                                delayTime={0}
                                                 threshold={100}
                                                 alt={item.pic_title}
                                                 crossOrigin="anonymous"
                                                 effect="blur"
                                                 className="img-card img-card-hover"
+                                                placeholderSrc={`${baseURL}${item.pic_image}-thumb.${item.pic_ext}`}
                                                 src={`${baseURL}${item.pic_image}-comp.${item.pic_ext}`}
                                             />
                                         </a>

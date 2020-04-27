@@ -6,7 +6,7 @@ import Masonry from "react-masonry-css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Picture from "../../components/Picture";
-import { Modal } from "antd";
+import { Modal, Empty, Spin } from "antd";
 import { Component } from "react";
 import { activePicturesByCategory } from '../../services/PicturesAPI';
 import { baseURL } from '../../utils/constant';
@@ -29,6 +29,7 @@ export default class Category extends Component {
             categoryName: 'All Category',
             categories: [],
             images: [],
+            loading: true,
         }
     }
 
@@ -39,8 +40,13 @@ export default class Category extends Component {
         Router.events.on('routeChangeComplete', this.handleRouteChange);
     }
 
-    handleRouteChange(url) {
-        this.loadImages();
+    handleRouteChange() {
+        this.setState({
+            images: [],
+            loading: true,
+        }, () => {
+            this.loadImages();
+        });
     }
 
     loadImages() {
@@ -49,6 +55,7 @@ export default class Category extends Component {
         activePicturesByCategory(query.catId).then(response => {
             this.setState({
                 images: response.data,
+                loading: false,
             });
         });
     }
@@ -63,7 +70,7 @@ export default class Category extends Component {
 
     render() {
         const { query } = this.props;
-        const { images, categoryName, categories } = this.state;
+        const { images, categoryName, categories, loading } = this.state;
 
         return (
             <Container>
@@ -97,6 +104,10 @@ export default class Category extends Component {
                     </Modal>
     
                     <div style={{marginTop: '5%'}}>
+                        {loading && <Spin size="large" />}
+
+                        {!loading && images.length === 0 && <Empty />}
+
                         <Masonry
                             breakpointCols={{
                                 default: 4,
@@ -118,12 +129,13 @@ export default class Category extends Component {
                                             <LazyLoadImage
                                                 key={item.pic_id}
                                                 style={{ width: "100%", marginBottom: 20 }}
-                                                delayTime={50}
+                                                delayTime={0}
                                                 threshold={100}
                                                 alt={item.pic_title}
                                                 crossOrigin="anonymous"
                                                 effect="blur"
                                                 className="img-card img-card-hover"
+                                                placeholderSrc={`${baseURL}${item.pic_image}-thumb.${item.pic_ext}`}
                                                 src={`${baseURL}${item.pic_image}-comp.${item.pic_ext}`}
                                             />
                                         </a>
