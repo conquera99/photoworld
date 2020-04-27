@@ -23,6 +23,7 @@ export default class Category extends Component {
 
         this.loadImages = this.loadImages.bind(this);
         this.loadCategories = this.loadCategories.bind(this);
+        this.handleRouteChange = this.handleRouteChange.bind(this);
 
         this.state = {
             categoryName: 'All Category',
@@ -33,6 +34,12 @@ export default class Category extends Component {
 
     componentDidMount() {
         this.loadCategories();
+        this.loadImages();
+
+        Router.events.on('routeChangeComplete', this.handleRouteChange);
+    }
+
+    handleRouteChange(url) {
         this.loadImages();
     }
 
@@ -72,7 +79,7 @@ export default class Category extends Component {
                             const active = query.catId === name ? 'active' : '';
 
                             return (
-                                <Link key={name} href={`/Category/[catId]`} as={`/Category/${name}`}>
+                                <Link key={name} href={`/Category/[catId]?catId=${name}`} as={`/Category/${name}`}>
                                     <a className={`category-link ${active}`}>{name}</a>
                                 </Link>
                             )
@@ -82,7 +89,7 @@ export default class Category extends Component {
                     <Modal
                         centered
                         visible={!!query.id}
-                        onCancel={() => Router.push("/")}
+                        onCancel={() => Router.push(`/Category/[catId]?catId=${query.catId}`, `/Category/${query.catId}`)}
                         footer={null}
                         bodyStyle={{ padding: 0 }}
                     >
@@ -91,7 +98,12 @@ export default class Category extends Component {
     
                     <div style={{marginTop: '5%'}}>
                         <Masonry
-                            breakpointCols={4}
+                            breakpointCols={{
+                                default: 4,
+                                1100: 3,
+                                700: 2,
+                                500: 1
+                            }}
                             className="my-masonry-grid"
                             columnClassName="my-masonry-grid_column"
                         >
@@ -99,7 +111,7 @@ export default class Category extends Component {
                                 return (
                                     <Link
                                         key={item.pic_id}
-                                        href={`/Category/${query.catId}?id=${item.pic_id}`}
+                                        href={`/Category/[catId]?catId=${query.catId}&id=${item.pic_id}`}
                                         as={`/Pictures/${item.pic_id}`}
                                     >
                                         <a>

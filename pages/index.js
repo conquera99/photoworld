@@ -68,7 +68,12 @@ export default class Home extends Component {
                         <h3>Latest Pics</h3>
                         <br />
                         <Masonry
-                            breakpointCols={4}
+                            breakpointCols={{
+                                default: 4,
+                                1100: 3,
+                                700: 2,
+                                500: 1
+                            }}
                             className="my-masonry-grid"
                             columnClassName="my-masonry-grid_column"
                         >
