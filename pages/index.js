@@ -64,7 +64,7 @@ export default class Home extends Component {
                         {query.id && <Picture id={query.id} />}
                     </Modal>
     
-                    <div style={{ marginTop: "5%", marginBottom: 20 }}>
+                    <div style={{ marginTop: "5%" }}>
                         <h3>Latest Pics</h3>
                         <br />
                         <Masonry
@@ -87,7 +87,7 @@ export default class Home extends Component {
                                         <a>
                                             <LazyLoadImage
                                                 key={item.pic_id}
-                                                style={{ width: "100%" }}
+                                                style={{ width: "100%", marginBottom: 20 }}
                                                 delayTime={50}
                                                 threshold={100}
                                                 alt={item.pic_title}
