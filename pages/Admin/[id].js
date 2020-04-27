@@ -46,7 +46,7 @@ export default class Dashboard extends Component {
 
             Router.push("/Admin");
         } else {
-            Router.push(`/Admin/${e.key}`, `/Admin/${e.key}`, { shallow: true });
+            Router.push(`/Admin/[id]?id=${e.key}`, `/Admin/${e.key}`, { shallow: true });
 
             this.setState({
                 activeMenu: e.key,

@@ -117,14 +117,17 @@ export default class Pictures extends Component {
                 oldImageExt: data.pic_ext,
             },
             () => {
-                data.pic_image = undefined;
-                data.pic_status = data.pic_status === true || parseInt(data.pic_status) === 1;
-                console.log(data);
+
+                const newData = Object.assign({}, data);
+
+                newData.pic_image = undefined;
+                newData.pic_status = newData.pic_status === true || parseInt(newData.pic_status) === 1;
+
                 if (this.form) {
-                    this.form.setFieldsValue(data);
+                    this.form.setFieldsValue(newData);
                 } else {
                     setTimeout(() => {
-                        this.form.setFieldsValue(data);
+                        this.form.setFieldsValue(newData);
                     }, 500);
                 }
             }
