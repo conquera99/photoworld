@@ -5,6 +5,7 @@ import { Input, Button, Form } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { authenticate } from '../../services/AuthAPI';
 import { tokenName } from '../../services/BaseAPI';
+import { baseURL } from '../../utils/constant';
 
 export default function Auth() {
     const token = cookie.load(tokenName);
