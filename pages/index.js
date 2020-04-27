@@ -64,7 +64,7 @@ export default class Home extends Component {
                         {query.id && <Picture id={query.id} />}
                     </Modal>
     
-                    <div style={{ marginTop: "5%" }}>
+                    <div style={{ marginTop: "5%", marginBottom: 20 }}>
                         <h3>Latest Pics</h3>
                         <br />
                         <Masonry
