@@ -1,17 +1,18 @@
 import Router from 'next/router'
 import Link from "next/link";
-import Container from "../components/Container";
-import Navigation from "../components/Navigation";
+import Container from "../../components/Container";
+import Navigation from "../../components/Navigation";
 import Masonry from "react-masonry-css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import Picture from "../components/Picture";
+import Picture from "../../components/Picture";
 import { Modal } from "antd";
 import { Component } from "react";
-import { activePictures } from '../services/PicturesAPI';
-import { baseURL } from '../utils/constant';
+import { activePicturesByCategory } from '../../services/PicturesAPI';
+import { baseURL } from '../../utils/constant';
+import { activeCategories } from '../../services/CategoriesAPI';
 
-export default class Home extends Component {
+export default class Category extends Component {
     
     static getInitialProps({query}) {
         return {query}
@@ -21,27 +22,43 @@ export default class Home extends Component {
         super(props);
 
         this.loadImages = this.loadImages.bind(this);
+        this.loadCategories = this.loadCategories.bind(this);
 
         this.state = {
+            categoryName: 'All Category',
+            categories: [],
             images: [],
         }
     }
 
     componentDidMount() {
+        this.loadCategories();
         this.loadImages();
     }
 
     loadImages() {
-        activePictures().then(response => {
+        const { query } = this.props;
+
+        activePicturesByCategory(query.catId).then(response => {
             this.setState({
                 images: response.data,
             });
         });
     }
 
+    loadCategories() {
+        activeCategories().then(response => {
+            this.setState({
+                categories: response.data,
+            });
+        });
+    }
+
     render() {
         const { query } = this.props;
-        const { images } = this.state;
+        const { images, categoryName, categories } = this.state;
+
+        console.log(query);
 
         return (
             <Container>
@@ -49,10 +66,20 @@ export default class Home extends Component {
     
                 <Navigation />
                 <div className="content">
-                    <h1>Conquera99 Photoworld</h1>
-                    <h5>
-                        "Shot a moment that has a story and make people happy as it sees a real picture"
-                    </h5>
+                    <h1>{categoryName}</h1>
+
+                    <div className="category-container">
+                        {categories.map(item => {
+                            const name = item.category_name;
+                            const active = query.catId === name ? 'active' : '';
+
+                            return (
+                                <Link key={name} href={`/Category/?catId${name}`} as={`/Category/${name}`}>
+                                    <a className={`category-link ${active}`}>{name}</a>
+                                </Link>
+                            )
+                        })}
+                    </div>
     
                     <Modal
                         centered
@@ -61,12 +88,10 @@ export default class Home extends Component {
                         footer={null}
                         bodyStyle={{ padding: 0 }}
                     >
-                        {query.id && <Picture id={query.id} />}
+                        {query.id && <Picture id={query.id} modal />}
                     </Modal>
     
-                    <div style={{ marginTop: "5%" }}>
-                        <h3>Latest Pics</h3>
-                        <br />
+                    <div style={{marginTop: '5%'}}>
                         <Masonry
                             breakpointCols={4}
                             className="my-masonry-grid"
@@ -76,13 +101,13 @@ export default class Home extends Component {
                                 return (
                                     <Link
                                         key={item.pic_id}
-                                        href={`/?id=${item.pic_id}`}
+                                        href={`/Category/?catId=${query.catId}&id=${item.pic_id}`}
                                         as={`/Pictures/${item.pic_id}`}
                                     >
                                         <a>
                                             <LazyLoadImage
                                                 key={item.pic_id}
-                                                style={{ width: "100%" }}
+                                                style={{ width: "100%", marginBottom: 20 }}
                                                 delayTime={50}
                                                 threshold={100}
                                                 alt={item.pic_title}
