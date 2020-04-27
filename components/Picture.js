@@ -43,7 +43,7 @@ export default class Picture extends Component {
                     <Head>
                         <title>{image.pic_title}</title>
                         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
-                        <link rel="icon" href="/favicon.ico" />
+                        <link rel="icon" href="/logo.jpg" />
 
                         <meta charSet="UTF-8"/>
                         <meta name="description" content="Conquera99 Photoworld, welcome to my website, enjoy all the images, I hope it can give you a stories that can be remembered forever."/>

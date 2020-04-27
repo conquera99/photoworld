@@ -1,1 +1,1 @@
-export const baseURL = 'http://localhost/portfolio-admin/';
+export const baseURL = 'https://photography.nunukan.net/';

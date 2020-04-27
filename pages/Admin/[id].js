@@ -9,9 +9,11 @@ import {
     LogoutOutlined,
     SettingOutlined,
 } from "@ant-design/icons";
+import cookie from 'react-cookies';
 import { Component } from "react";
 import PageContainer from "../../components/PageContainer";
 import { baseURL } from '../../utils/constant';
+import { tokenName } from "../../services/BaseAPI";
 
 export default class Dashboard extends Component {
     static getInitialProps({ query }) {
@@ -28,10 +30,20 @@ export default class Dashboard extends Component {
         };
     }
 
+    componentDidMount() {
+        const token = cookie.load(tokenName);
+
+        if(!token) {
+            Router.push("/Admin");
+        }
+    }
+
     handleClick(e) {
         if (e.key === "home") {
             Router.push("/");
         } else if (e.key === "signout") {
+            cookie.remove(tokenName, {path: '/'});
+
             Router.push("/Admin");
         } else {
             Router.push(`/Admin/${e.key}`, `/Admin/${e.key}`, { shallow: true });

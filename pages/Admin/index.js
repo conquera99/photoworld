@@ -7,6 +7,12 @@ import { authenticate } from '../../services/AuthAPI';
 import { tokenName } from '../../services/BaseAPI';
 
 export default function Auth() {
+    const token = cookie.load(tokenName);
+
+    if(token) {
+        Router.push("/Admin/dashboard");
+    }
+
     const doLogin = (values) => {
         console.log(values);
 

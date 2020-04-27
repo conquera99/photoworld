@@ -1,10 +1,10 @@
 import { notification } from 'antd';
 
 import cookie from 'react-cookies';
+import { baseURL } from '../utils/constant';
 const tokenHeaderName = 'x-token';
 const languageHeaderName = 'x-language';
 
-const baseAPIURL = 'http://localhost/portfolio-admin/';
 const AuthEndPoint = 'Auth/';
 export const authenticateAPI = AuthEndPoint + 'authenticate';
 export const validateTokenAPI = AuthEndPoint + 'validateToken';
@@ -24,7 +24,7 @@ export default function APIRequest(URL, formData = null, mode = 'POST') {
     const language = 'en';
 
     return new Promise((resolve, reject) => {
-        fetch(baseAPIURL + URL, {
+        fetch(baseURL + URL, {
             method: mode,
             headers: {
                 [tokenHeaderName]: token,
