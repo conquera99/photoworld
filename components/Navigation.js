@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./style.less";
+import { baseURL } from "../utils/constant";
 
 export default function Navigation() {
     return (
@@ -8,14 +9,14 @@ export default function Navigation() {
                 <img
                     alt="nav-logo"
                     className="logo"
-                    src="http://localhost/portfolio-admin/public/logo.png"
+                    src={`${baseURL}public/logo.png`}
                 />
             </div>
             <div className="nav-right">
                 <Link href="/">
                     <a>Home</a>
                 </Link>
-                <Link href="/Category/All">
+                <Link href="/Category/[catId]" as="/Category/All">
                     <a>Category</a>
                 </Link>
                 <Link href="/About">

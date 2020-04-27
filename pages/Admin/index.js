@@ -26,7 +26,7 @@ export default function Auth() {
         <AdminContainer>
             <div className="container">
                 <div className="login-form">
-                    <img className="logo" src="http://localhost/portfolio-admin/public/logo.png" />
+                    <img className="logo" src={`${baseURL}public/logo.png`} />
                     
                     <Form
                         layout="vertical"

@@ -58,8 +58,6 @@ export default class Category extends Component {
         const { query } = this.props;
         const { images, categoryName, categories } = this.state;
 
-        console.log(query);
-
         return (
             <Container>
                 <div className="cover" style={{ backgroundImage: `url(${baseURL}public/cover/cover.jpg)` }} />
@@ -74,7 +72,7 @@ export default class Category extends Component {
                             const active = query.catId === name ? 'active' : '';
 
                             return (
-                                <Link key={name} href={`/Category/?catId${name}`} as={`/Category/${name}`}>
+                                <Link key={name} href={`/Category/[catId]`} as={`/Category/${name}`}>
                                     <a className={`category-link ${active}`}>{name}</a>
                                 </Link>
                             )
@@ -101,7 +99,7 @@ export default class Category extends Component {
                                 return (
                                     <Link
                                         key={item.pic_id}
-                                        href={`/Category/?catId=${query.catId}&id=${item.pic_id}`}
+                                        href={`/Category/${query.catId}?id=${item.pic_id}`}
                                         as={`/Pictures/${item.pic_id}`}
                                     >
                                         <a>
