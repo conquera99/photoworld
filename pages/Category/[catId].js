@@ -40,12 +40,14 @@ export default class Category extends Component {
         Router.events.on('routeChangeComplete', this.handleRouteChange);
     }
 
-    handleRouteChange() {
+    handleRouteChange(url) {
         this.setState({
             images: [],
             loading: true,
         }, () => {
-            this.loadImages();
+            if(url.toString().include('Category')) {
+                this.loadImages();
+            }
         });
     }
 
