@@ -29,6 +29,7 @@ export default class Category extends Component {
             categoryName: 'All Category',
             categories: [],
             images: [],
+            latestUrl: '',
             loading: true,
         }
     }
@@ -41,14 +42,24 @@ export default class Category extends Component {
     }
 
     handleRouteChange(url) {
-        this.setState({
-            images: [],
-            loading: true,
-        }, () => {
-            if(url.toString().include('Category')) {
+        const { latestUrl } = this.state;
+
+        console.log('currentURL', url);
+        console.log('latestURL', latestUrl);
+
+        if(url.toString().includes('Category') && !latestUrl.includes('Pictures')) {
+            this.setState({
+                images: [],
+                latestUrl: url,
+                loading: true,
+            }, () => {
                 this.loadImages();
-            }
-        });
+            });
+        } else {
+            this.setState({
+                latestUrl: url,
+            });
+        }
     }
 
     loadImages() {
