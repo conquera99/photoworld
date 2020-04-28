@@ -4,13 +4,13 @@ A simple apps that can manage image portfolio, that have admin cms. This app is 
 
 ## Features
 1. Admin Page
-    a. Authentication
-    b. Categories Master
-    c. Pictures Master
+    * Authentication
+    * Categories Master
+    * Pictures Master
 2. Main Page
-    a. Home
-    b. Gallery
-    c. About
+    * Home
+    * Gallery
+    * About
 
 ## Example Routing With Next.js Router
 
@@ -39,6 +39,17 @@ Example 2:
 4. react-cookies
 5. react-lazy-load-image-component
 6. react-masonry-css
+
+## How To Run
+1. Clone this repository
+2. Run ```npm install``` on project root
+3. Run ```npm run dev``` and go to http://localhost:3000/
+
+### Build
+Run ```npm run build```
+
+### Run For Production
+Run ```npm run start``` after build
 
 ## MIT License
 
