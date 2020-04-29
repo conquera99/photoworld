@@ -4,10 +4,10 @@ A simple apps that can manage image portfolio, that have admin cms. This app is 
 
 Here some screenshot:
 Screenshot 1
-[Screenshot 1](https://github.com/conquera99/photoworld/blob/master/screenshot/ss1.gif)
+![Screenshot 1](https://github.com/conquera99/photoworld/blob/master/screenshot/ss1.gif)
 
 Screenshot 2
-[Screenshot 2](https://github.com/conquera99/photoworld/blob/master/screenshot/ss2.gif)
+![Screenshot 2](https://github.com/conquera99/photoworld/blob/master/screenshot/ss2.gif)
 
 ## Features
 1. Admin Page
