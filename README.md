@@ -3,10 +3,13 @@
 A simple apps that can manage image portfolio, that have admin cms. This app is showing the ease of use [Next.js](https://nextjs.org/) with instagram style modal routing. You can view the demo [here](https://conquera99.now.sh/).
 
 Here some screenshot:
+
 Screenshot 1
+
 ![Screenshot 1](https://github.com/conquera99/photoworld/blob/master/screenshot/ss1.gif)
 
 Screenshot 2
+
 ![Screenshot 2](https://github.com/conquera99/photoworld/blob/master/screenshot/ss2.gif)
 
 ## Features
