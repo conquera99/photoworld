@@ -94,8 +94,8 @@ export default class Home extends Component {
                                                 crossOrigin="anonymous"
                                                 effect="blur"
                                                 className="img-card img-card-hover"
-                                                placeholderSrc={`${baseURL}${item.pic_image}-thumb.${item.pic_ext}`}
-                                                src={`${baseURL}${item.pic_image}-comp.${item.pic_ext}`}
+                                                placeholderSrc={`${baseURL}${item.pic_image}-thumb.jpeg`}
+                                                src={`${baseURL}${item.pic_image}-comp.jpeg`}
                                             />
                                         </a>
                                     </Link>

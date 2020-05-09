@@ -47,7 +47,7 @@ export default class Pictures extends Component {
             keywords: "",
             page: 1,
             total: 1,
-            show: 8,
+            show: 5,
             pictures: [
                 {
                     pic_title: "1",
@@ -180,7 +180,7 @@ export default class Pictures extends Component {
             {
                 page: page,
             },
-            () => this.loadCategories()
+            () => this.loadPictures()
         );
     }
 
@@ -190,6 +190,7 @@ export default class Pictures extends Component {
         listPictures(keywords, page, show).then((response) => {
             this.setState({
                 pictures: response.result,
+                total: response.totalFiltered,
                 loading: false,
             });
         });

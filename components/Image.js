@@ -4,10 +4,10 @@ export default function Image({src, alt, ext, isThumb, style, height}) {
     let type = ext;
     if(ext === 'jpg') type = 'jpeg';
 
-    let filename = `${baseURL}${src}-comp.${ext}`;
+    let filename = `${baseURL}${src}-comp.jpeg`;
 
     if(isThumb) {
-        filename = `${baseURL}${src}-thumb.${ext}`;
+        filename = `${baseURL}${src}-thumb.jpeg`;
     }
 
     return (

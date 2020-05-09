@@ -64,8 +64,8 @@ export default class Picture extends Component {
                             crossOrigin="anonymous"
                             effect="blur"
                             className="img-card"
-                            placeholderSrc={`${baseURL}${image.pic_image}-thumb.${image.pic_ext}`}
-                            src={`${baseURL}${image.pic_image}-comp.${image.pic_ext}`}
+                            placeholderSrc={`${baseURL}${image.pic_image}-thumb.jpeg`}
+                            src={`${baseURL}${image.pic_image}-comp.jpeg`}
                         />
                     )}
 
