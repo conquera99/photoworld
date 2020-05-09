@@ -22,6 +22,12 @@ Screenshot 2
     * Gallery
     * About
 
+## to do
+1. Add view count on each picture
+2. Add share button
+3. Add dashboard metrics: most viewed pictures, most share pictures
+4. Add config to change page logo and page background
+
 ## Example Routing With Next.js Router
 
 Example 1:
