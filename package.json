@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "moment": "^2.26.0",
-    "antd": "^4.2.5",
+    "antd": "^4.3.1",
     "next": "9.4.4",
     "react": "16.13.1",
     "react-cookies": "^0.1.1",
