@@ -8,8 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "antd": "^4.4.0",
     "moment": "^2.27.0",
-    "antd": "^4.3.3",
     "next": "9.4.4",
     "react": "16.13.1",
     "react-cookies": "^0.1.1",
