@@ -10,7 +10,7 @@
   "dependencies": {
     "moment": "^2.28.0",
     "antd": "^4.6.4",
-    "next": "9.5.5",
+    "next": "10.0.1",
     "react": "16.14.0",
     "react-cookies": "^0.1.1",
     "react-dom": "16.14.0",
