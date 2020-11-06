@@ -1,28 +1,11 @@
-import { useRouter } from "next/router";
-import Picture from "../../components/Picture";
-import { Component } from "react";
+import React from 'react';
+import { useRouter } from 'next/router';
+import Picture from '../../components/Picture';
 
-export default class PicturePage extends Component {
-	
-    static getInitialProps({query}) {
-        return {query}
-	}
-	
-	state = {
-		id: null,
-	}
-	
-	componentDidMount() {
-		const { query } = this.props;
+const PicturePage = () => {
+	const router = useRouter();
 
-		this.setState({
-			id: query.id,
-		});
-	}
-	
-	render() {
-		const { id } = this.state;
+	return router.query.id ? <Picture id={router.query.id} standalone /> : null;
+};
 
-		return id && <Picture id={id} standalone />
-	}
-}
+export default PicturePage;

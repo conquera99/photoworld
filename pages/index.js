@@ -1,110 +1,102 @@
-import Router from 'next/router'
-import Link from "next/link";
-import Container from "../components/Container";
-import Navigation from "../components/Navigation";
-import Masonry from "react-masonry-css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
-import Picture from "../components/Picture";
-import { Modal } from "antd";
-import { Component } from "react";
-import { activePictures } from '../services/PicturesAPI';
+import React from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { Modal } from 'antd';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+import Masonry from 'react-masonry-css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+import Container from '../components/Container';
+import Navigation from '../components/Navigation';
+import Picture from '../components/Picture';
 import { baseURL } from '../utils/constant';
 
-export default class Home extends Component {
-    
-    static getInitialProps({query}) {
-        return {query}
-    }
+const Home = ({ images }) => {
+	const router = useRouter();
 
-    constructor(props) {
-        super(props);
+	return (
+		<Container>
+			<div
+				className="cover"
+				style={{ backgroundImage: `url(${baseURL}public/cover/cover.jpg)` }}
+			/>
 
-        this.loadImages = this.loadImages.bind(this);
+			<Navigation />
+			<div className="content">
+				<h1>Conquera99 Photoworld</h1>
+				<h5>
+					&quot;Shot a moment that has a story and make people happy as it sees a real
+					picture&quot;
+				</h5>
 
-        this.state = {
-            images: [],
-        }
-    }
+				<Modal
+					centered
+					visible={!!router.query.id}
+					onCancel={() => router.push('/')}
+					footer={null}
+					bodyStyle={{ padding: 0 }}
+				>
+					{router.query.id && <Picture id={router.query.id} />}
+				</Modal>
 
-    componentDidMount() {
-        this.loadImages();
-    }
+				<div style={{ marginTop: '5%' }}>
+					<h3>Latest Pics</h3>
+					<br />
+					<Masonry
+						breakpointCols={{
+							default: 4,
+							1100: 3,
+							700: 2,
+							500: 1,
+						}}
+						className="my-masonry-grid"
+						columnClassName="my-masonry-grid_column"
+					>
+						{images.map((item) => {
+							return (
+								<Link
+									key={item.pic_id}
+									href={`/?id=${item.pic_id}`}
+									as={`/Pictures/${item.pic_id}`}
+								>
+									<a>
+										<LazyLoadImage
+											key={item.pic_id}
+											style={{ width: '100%', marginBottom: 20 }}
+											delayTime={0}
+											threshold={100}
+											alt={item.pic_title}
+											crossOrigin="anonymous"
+											effect="blur"
+											className="img-card img-card-hover"
+											placeholderSrc={`${baseURL}${item.pic_image}-thumb.jpeg`}
+											src={`${baseURL}${item.pic_image}-comp.jpeg`}
+										/>
+									</a>
+								</Link>
+							);
+						})}
+					</Masonry>
+				</div>
+			</div>
+		</Container>
+	);
+};
 
-    loadImages() {
-        activePictures().then(response => {
-            this.setState({
-                images: response.data,
-            });
-        });
-    }
+export async function getStaticProps() {
+	// Call an external API endpoint to get posts.
+	// You can use any data fetching library
+	const res = await fetch(`${baseURL}Pictures/activeList`);
+	const images = await res.json();
 
-    render() {
-        const { query } = this.props;
-        const { images } = this.state;
-
-        return (
-            <Container>
-                <div className="cover" style={{ backgroundImage: `url(${baseURL}public/cover/cover.jpg)` }} />
-    
-                <Navigation />
-                <div className="content">
-                    <h1>Conquera99 Photoworld</h1>
-                    <h5>
-                        "Shot a moment that has a story and make people happy as it sees a real picture"
-                    </h5>
-    
-                    <Modal
-                        centered
-                        visible={!!query.id}
-                        onCancel={() => Router.push("/")}
-                        footer={null}
-                        bodyStyle={{ padding: 0 }}
-                    >
-                        {query.id && <Picture id={query.id} />}
-                    </Modal>
-    
-                    <div style={{ marginTop: "5%" }}>
-                        <h3>Latest Pics</h3>
-                        <br />
-                        <Masonry
-                            breakpointCols={{
-                                default: 4,
-                                1100: 3,
-                                700: 2,
-                                500: 1
-                            }}
-                            className="my-masonry-grid"
-                            columnClassName="my-masonry-grid_column"
-                        >
-                            {images.map(item => {
-                                return (
-                                    <Link
-                                        key={item.pic_id}
-                                        href={`/?id=${item.pic_id}`}
-                                        as={`/Pictures/${item.pic_id}`}
-                                    >
-                                        <a>
-                                            <LazyLoadImage
-                                                key={item.pic_id}
-                                                style={{ width: "100%", marginBottom: 20 }}
-                                                delayTime={0}
-                                                threshold={100}
-                                                alt={item.pic_title}
-                                                crossOrigin="anonymous"
-                                                effect="blur"
-                                                className="img-card img-card-hover"
-                                                placeholderSrc={`${baseURL}${item.pic_image}-thumb.jpeg`}
-                                                src={`${baseURL}${item.pic_image}-comp.jpeg`}
-                                            />
-                                        </a>
-                                    </Link>
-                                );
-                            })}
-                        </Masonry>
-                    </div>
-                </div>
-            </Container>
-        );
-    }
+	// By returning { props: posts }, the Blog component
+	// will receive `posts` as a prop at build time
+	return {
+		props: {
+			images: images.data,
+		},
+	};
 }
+
+export default Home;

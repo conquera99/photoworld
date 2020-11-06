@@ -1,0 +1,54 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "airbnb", 
+        "prettier"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "no-unused-vars":"warn",
+        "no-console":["warn", {"allow": ["warn", "error"]}],
+        "func-names":"off",
+        "object-shorthand":"off",
+        "class-methods-use-this":"off",
+        "react/prop-types":0,
+        "react/jsx-indent": 0,
+        "react/no-unused-state": "warn",
+        "react/jsx-indent-props": 0,
+        "react/jsx-wrap-multilines": 0,
+        "react/jsx-curly-newline": 0,
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/prefer-stateless-function": [0, { "ignorePureComponents": false}],
+        "import/prefer-default-export": 0,
+        "import/no-extraneous-dependencies": 0,
+        "no-nested-ternary":"off",
+        "react/jsx-props-no-spreading":0,
+        "no-param-reassign":"off",
+        "no-restricted-globals":"warn",
+        "jsx-a11y/anchor-is-valid":0,
+        "no-return-assign":"off",
+        "jsx-a11y/click-events-have-key-events":"off",
+        "jsx-a11y/no-static-element-interactions":"off",
+        "no-plusplus": "off"
+    }
+}
