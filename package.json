@@ -33,7 +33,7 @@
         "eslint-plugin-react": "^7.21.5",
         "eslint-plugin-react-hooks": "^4.2.0",
         "moment-locales-webpack-plugin": "^1.2.0",
-        "less": "^3.12.2",
+        "less": "^4.0.0",
         "next-fonts": "^1.4.0",
         "next-images": "^1.6.2",
         "next-purgecss": "^4.0.0",
