@@ -18,7 +18,7 @@
         "react-masonry-css": "^1.0.14"
     },
     "devDependencies": {
-        "@fullhuman/postcss-purgecss": "^3.0.0",
+        "@fullhuman/postcss-purgecss": "^4.0.2",
         "@zeit/next-less": "^1.0.1",
         "babel-preset-rsuite": "^4.0.1",
         "duplicate-package-checker-webpack-plugin": "^3.0.0",
