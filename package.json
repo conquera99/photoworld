@@ -37,7 +37,7 @@
         "next-fonts": "^1.4.0",
         "next-images": "^1.6.2",
         "next-purgecss": "^4.0.0",
-        "postcss-preset-env": "^6.7.0",
+        "postcss-preset-env": "^7.7.2",
         "prettier": "^2.1.2"
     }
 }
