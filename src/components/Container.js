@@ -5,10 +5,6 @@ export default function Container({ children }) {
 		<div>
 			<Head>
 				<title>Portfolio</title>
-				<link
-					href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
-					rel="stylesheet"
-				/>
 				<link rel="icon" href="/logo.png" />
 
 				<meta charSet="UTF-8" />

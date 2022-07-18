@@ -1,5 +1,6 @@
 import Router from 'next/router';
 import cookie from 'react-cookies';
+import Link from 'next/link';
 import { Input, Button, Form } from 'antd';
 
 import { UserOutlined, LockOutlined } from 'components/icons';
@@ -9,7 +10,6 @@ import { authenticate } from 'services/AuthAPI';
 import { tokenName } from 'services/BaseAPI';
 
 import { baseURL } from 'utils/constant';
-import Link from 'next/link';
 
 export default function Auth() {
 	const token = cookie.load(tokenName);
@@ -30,7 +30,7 @@ export default function Auth() {
 			<div className="container">
 				<div className="login-form">
 					<Link href="/">
-						<img className="logo" src={`${baseURL}public/logo.png`} />
+						<img className="logo" alt="logo" src={`${baseURL}public/logo.png`} />
 					</Link>
 
 					<Form layout="vertical" name="auth" onFinish={doLogin}>

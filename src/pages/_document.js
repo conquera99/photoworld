@@ -4,7 +4,12 @@ class MyDocument extends Document {
 	render() {
 		return (
 			<Html lang="en">
-				<Head />
+				<Head>
+					<link
+						href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
+						rel="stylesheet"
+					/>
+				</Head>
 				<body>
 					<Main />
 					<NextScript />

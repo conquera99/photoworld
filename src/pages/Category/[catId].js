@@ -47,8 +47,8 @@ export default class Category extends Component {
 	handleRouteChange(url) {
 		const { latestUrl } = this.state;
 
-		console.log('currentURL', url);
-		console.log('latestURL', latestUrl);
+		// console.log('currentURL', url);
+		// console.log('latestURL', latestUrl);
 
 		if (url.toString().includes('Category') && !latestUrl.includes('Pictures')) {
 			this.setState(
