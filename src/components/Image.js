@@ -1,5 +1,5 @@
 import React from 'react';
-import { baseURL } from '../utils/constant';
+import { baseURL } from 'utils/constant';
 
 export default function Image({ src, alt, ext, isThumb, style, height }) {
 	let type = ext;

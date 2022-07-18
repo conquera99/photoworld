@@ -1,7 +1,6 @@
-import React from 'react';
 import App from 'next/app';
 
-import '../components/style.less';
+require('styles/globals.less');
 
 export default class MyApp extends App {
 	render() {

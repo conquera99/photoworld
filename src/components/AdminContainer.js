@@ -1,11 +1,10 @@
-import React from 'react';
 import Head from 'next/head';
 
-export default function Container({ children }) {
+export default function AdminContainer({ children }) {
 	return (
 		<div>
 			<Head>
-				<title>Portfolio</title>
+				<title>Admin</title>
 				<link
 					href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
 					rel="stylesheet"

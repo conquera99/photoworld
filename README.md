@@ -1,6 +1,6 @@
-## Photoworld
+# Photoworld
 
-A simple apps that can manage image portfolio, that have admin cms. This app is showing the ease of use [Next.js](https://nextjs.org/) with instagram style modal routing. You can view the demo [here](https://conquera99.now.sh/).
+A simple apps that can manage image portfolio, that have admin cms. This app is showing the ease of use [Next.js](https://nextjs.org/) with instagram style modal routing. You can view the demo [here](https://conquera99.vercel.app/).
 
 Here some screenshot:
 
@@ -13,16 +13,18 @@ Screenshot 2
 ![Screenshot 2](https://github.com/conquera99/photoworld/blob/master/screenshot/ss2.gif)
 
 ## Features
+
 1. Admin Page
-    * Authentication
-    * Categories Master
-    * Pictures Master
+    - Authentication
+    - Categories Master
+    - Pictures Master
 2. Main Page
-    * Home
-    * Gallery
-    * About
+    - Home
+    - Gallery
+    - About
 
 ## to do
+
 1. Add view count on each picture
 2. Add share button
 3. Add dashboard metrics: most viewed pictures, most share pictures
@@ -31,24 +33,27 @@ Screenshot 2
 ## Example Routing With Next.js Router
 
 Example 1:
-```
+
+```jsx
 <Link key={name} href={`/Category/[catId]?catId=${name}`} as={`/Category/${name}`}>
-    <a className={`category-link ${active}`}>{name}</a>
+ <a className={`category-link ${active}`}>{name}</a>
 </Link>
 ```
 
 Example 2:
-```
+
+```jsx
 <Link
-    key={item.pic_id}
-    href={`/Category/[catId]?catId=${query.catId}&id=${item.pic_id}`}
-    as={`/Pictures/${item.pic_id}`}
+ key={item.pic_id}
+ href={`/Category/[catId]?catId=${query.catId}&id=${item.pic_id}`}
+ as={`/Pictures/${item.pic_id}`}
 >
-    {content}
+ {content}
 </Link>
 ```
 
 ## Dependecies
+
 1. Ant Design React
 2. MomentJS
 3. NextJS
@@ -56,16 +61,55 @@ Example 2:
 5. react-lazy-load-image-component
 6. react-masonry-css
 
+## Environment Variable
+
+```env
+API_URL=http://localhost/portfolio-admin/
+```
+
+change env variables with your own backend url
+
+## How To Setup Your Backend
+
+1. setup auth for login with `username` and `password` as parameters, then return token to client
+2. check all `services` folder for url path and api parameters
+
+## List Backend Routes
+
+### Auth
+
+1. Auth/authenticate
+2. Auth/validateToken
+
+### Categories
+
+1. Categories/list
+2. Categories/save
+3. Categories/remove
+4. Categories/activeList
+
+### Pictures
+
+1. Pictures/list
+2. Pictures/save
+3. Pictures/remove
+4. Pictures/activeList
+5. Pictures/loadByCategory
+6. Pictures/detail
+
 ## How To Run
+
 1. Clone this repository
-2. Run ```npm install``` on project root
-3. Run ```npm run dev``` and go to http://localhost:3000/
+2. Run `npm install` or `yarn install` on project root
+3. Run `npm run dev` or `yarn dev` and go to <http://localhost:3000/>
 
 ### Build
-Run ```npm run build```
+
+Run `npm run build` or `yarn build`
 
 ### Run For Production
-Run ```npm run start``` after build
+
+Run `npm run start` or `yarn start` after build
 
 ## MIT License
 

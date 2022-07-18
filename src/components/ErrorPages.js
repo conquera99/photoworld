@@ -1,7 +1,6 @@
 import { Button, Result } from 'antd';
 
-import React from 'react';
-import Container from './Container';
+import Container from 'components/Container';
 
 const errorMessage = {
 	404: 'Not Found',

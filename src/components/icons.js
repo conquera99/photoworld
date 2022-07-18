@@ -1,0 +1,14 @@
+export { default as LeftCircleOutlined } from '@ant-design/icons/lib/icons/LeftCircleOutlined';
+export { default as UploadOutlined } from '@ant-design/icons/lib/icons/UploadOutlined';
+export { default as HomeOutlined } from '@ant-design/icons/lib/icons/HomeOutlined';
+export { default as TagsOutlined } from '@ant-design/icons/lib/icons/TagsOutlined';
+export { default as PictureOutlined } from '@ant-design/icons/lib/icons/PictureOutlined';
+export { default as BorderlessTableOutlined } from '@ant-design/icons/lib/icons/BorderlessTableOutlined';
+export { default as LogoutOutlined } from '@ant-design/icons/lib/icons/LogoutOutlined';
+export { default as SettingOutlined } from '@ant-design/icons/lib/icons/SettingOutlined';
+export { default as UserOutlined } from '@ant-design/icons/lib/icons/UserOutlined';
+export { default as LockOutlined } from '@ant-design/icons/lib/icons/LockOutlined';
+export { default as InstagramOutlined } from '@ant-design/icons/lib/icons/InstagramOutlined';
+export { default as FacebookOutlined } from '@ant-design/icons/lib/icons/FacebookOutlined';
+export { default as TwitterOutlined } from '@ant-design/icons/lib/icons/TwitterOutlined';
+export { default as GithubOutlined } from '@ant-design/icons/lib/icons/GithubOutlined';

@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Avatar } from 'antd';
+
 import {
 	InstagramOutlined,
 	FacebookOutlined,
 	TwitterOutlined,
 	GithubOutlined,
-} from '@ant-design/icons';
-import Container from '../components/Container';
-import Navigation from '../components/Navigation';
-import { baseURL } from '../utils/constant';
+} from 'components/icons';
+import Container from 'components/Container';
+import Navigation from 'components/Navigation';
+
+import { baseURL } from 'utils/constant';
 
 export default class About extends Component {
 	render() {

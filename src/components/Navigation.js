@@ -1,7 +1,6 @@
-import React from 'react';
 import Link from 'next/link';
-import './style.less';
-import { baseURL } from '../utils/constant';
+
+import { baseURL } from 'utils/constant';
 
 export default function Navigation() {
 	return (

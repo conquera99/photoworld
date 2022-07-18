@@ -12,7 +12,8 @@ import {
     notification,
     Tag,
 } from "antd";
-import { listCategories, saveCategories, removeCategories } from "../services/CategoriesAPI";
+
+import { listCategories, saveCategories, removeCategories } from "services/CategoriesAPI";
 
 export default class Categories extends Component {
     constructor(props) {

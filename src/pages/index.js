@@ -1,16 +1,16 @@
-import React from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Masonry from 'react-masonry-css';
+import { useRouter } from 'next/router';
 import { Modal } from 'antd';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-import Masonry from 'react-masonry-css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-import Container from '../components/Container';
-import Navigation from '../components/Navigation';
-import Picture from '../components/Picture';
-import { baseURL } from '../utils/constant';
+import Container from 'components/Container';
+import Navigation from 'components/Navigation';
+import Picture from 'components/Picture';
+
+import { baseURL } from 'utils/constant';
 
 const Home = ({ images }) => {
 	const router = useRouter();
@@ -87,7 +87,9 @@ const Home = ({ images }) => {
 export async function getStaticProps() {
 	// Call an external API endpoint to get posts.
 	// You can use any data fetching library
-	const res = await fetch(`${baseURL}Pictures/activeList`);
+	const url = `${baseURL}Pictures/activeList`;
+
+	const res = await fetch(url);
 	const images = await res.json();
 
 	// By returning { props: posts }, the Blog component

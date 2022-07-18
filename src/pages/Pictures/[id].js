@@ -1,6 +1,6 @@
-import React from 'react';
 import { useRouter } from 'next/router';
-import Picture from '../../components/Picture';
+
+import Picture from 'components/Picture';
 
 const PicturePage = () => {
 	const router = useRouter();

@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
 import Head from 'next/head';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import { LeftCircleOutlined } from '@ant-design/icons';
 import Router from 'next/router';
 import moment from 'moment';
+import { Component } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-import { baseURL } from '../utils/constant';
-import { detailPictures } from '../services/PicturesAPI';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+import { LeftCircleOutlined } from 'components/icons';
+
+import { baseURL } from 'utils/constant';
+import { detailPictures } from 'services/PicturesAPI';
 
 export default class Picture extends Component {
 	constructor(props) {

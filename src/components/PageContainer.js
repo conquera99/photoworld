@@ -1,7 +1,6 @@
-import React from 'react';
-import Categories from '../modules/Categories';
-import Pictures from '../modules/Pictures';
-import Config from '../modules/Config';
+import Categories from 'modules/Categories';
+import Pictures from 'modules/Pictures';
+import Config from 'modules/Config';
 
 export default function PageContainer({ page }) {
 	return (
