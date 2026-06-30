@@ -1,19 +1,29 @@
 'use client';
 
 import Link from 'next/link';
-import { baseURL } from 'utils/constant';
+import { useEffect, useState } from 'react';
 
 export default function Navigation() {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 60);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
     return (
-        <header className="navigation">
+        <header className={`navigation${scrolled ? ' scrolled' : ''}`}>
             <div className="nav-left">
-                <img alt="nav-logo" className="logo" src="/logo.png" />
+                <Link href="/">
+                    <img alt="logo" className="logo" src="/logo.png" />
+                </Link>
             </div>
-            <div className="nav-right">
+            <nav className="nav-right">
                 <Link href="/">Home</Link>
-                <Link href="/category/All">Category</Link>
+                <Link href="/category/All">Gallery</Link>
                 <Link href="/about">About</Link>
-            </div>
+            </nav>
         </header>
     );
 }

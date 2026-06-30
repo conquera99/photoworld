@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Masonry from 'react-masonry-css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Modal, Empty, Spin } from 'antd';
+import { Modal } from 'antd';
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -39,31 +39,31 @@ function CategoryContent({ catId }: { catId: string }) {
     }, [catId]);
 
     return (
-        <div>
-            <div
-                className="cover"
-                style={{ backgroundImage: `url(${baseURL}public/cover/cover.jpg)` }}
-            />
-
+        <>
             <Navigation />
-            <div className="content">
-                <h1>All Category</h1>
 
-                <div className="category-container">
-                    {categories.map((item) => {
-                        const name = item.category_name;
-                        const active = catId === name ? 'active' : '';
+            <section className="section" style={{ paddingTop: 120 }}>
+                <div className="section-header">
+                    <p className="section-label animate-fade-in-up">Browse</p>
+                    <h2 className="section-title animate-fade-in-up delay-100">Gallery</h2>
+                </div>
 
-                        return (
-                            <Link
-                                key={name}
-                                href={`/category/${name}`}
-                                className={`category-link ${active}`}
-                            >
-                                {name}
-                            </Link>
-                        );
-                    })}
+                <div className="category-pills animate-fade-in-up delay-200">
+                    <Link
+                        href="/category/All"
+                        className={`category-pill${catId === 'All' ? ' active' : ''}`}
+                    >
+                        All
+                    </Link>
+                    {categories.map((item) => (
+                        <Link
+                            key={item.category_name}
+                            href={`/category/${item.category_name}`}
+                            className={`category-pill${catId === item.category_name ? ' active' : ''}`}
+                        >
+                            {item.category_name}
+                        </Link>
+                    ))}
                 </div>
 
                 <Modal
@@ -71,45 +71,45 @@ function CategoryContent({ catId }: { catId: string }) {
                     open={!!modalId}
                     onCancel={() => router.push(`/category/${catId}`)}
                     footer={null}
-                    styles={{ body: { padding: 0 } }}
+                    styles={{ body: { padding: 0, background: 'transparent' } }}
+                    width={900}
+                    closable={false}
                 >
                     {modalId && <Picture id={modalId} />}
                 </Modal>
 
-                <div style={{ marginTop: '5%' }}>
-                    {loading && <Spin size="large" />}
-
-                    {!loading && images.length === 0 && <Empty />}
-
+                {loading ? (
+                    <div className="loading-spinner" />
+                ) : images.length === 0 ? (
+                    <div className="empty-state">No photos found</div>
+                ) : (
                     <Masonry
-                        breakpointCols={{
-                            default: 4,
-                            1100: 3,
-                            700: 2,
-                            500: 1,
-                        }}
-                        className="my-masonry-grid"
-                        columnClassName="my-masonry-grid_column"
+                        breakpointCols={{ default: 4, 1100: 3, 700: 2, 500: 1 }}
+                        className="masonry-grid"
+                        columnClassName="masonry-column"
                     >
                         {images.map((item) => (
-                            <Link key={item.pic_id} href={`/category/${catId}?id=${item.pic_id}`}>
-                                <LazyLoadImage
-                                    style={{ width: '100%', marginBottom: 20 }}
-                                    delayTime={0}
-                                    threshold={100}
-                                    alt={item.pic_title}
-                                    crossOrigin="anonymous"
-                                    effect="blur"
-                                    className="img-card img-card-hover"
-                                    placeholderSrc={`${baseURL}${item.pic_image}-thumb.jpeg`}
-                                    src={`${baseURL}${item.pic_image}-comp.jpeg`}
-                                />
-                            </Link>
+                            <div key={item.pic_id} className="masonry-item">
+                                <Link href={`/category/${catId}?id=${item.pic_id}`}>
+                                    <LazyLoadImage
+                                        alt={item.pic_title}
+                                        delayTime={0}
+                                        threshold={100}
+                                        crossOrigin="anonymous"
+                                        effect="blur"
+                                        placeholderSrc={`${baseURL}${item.pic_image}-thumb.jpeg`}
+                                        src={`${baseURL}${item.pic_image}-comp.jpeg`}
+                                    />
+                                    <div className="masonry-item-overlay">
+                                        <span className="masonry-item-title">{item.pic_title}</span>
+                                    </div>
+                                </Link>
+                            </div>
                         ))}
                     </Masonry>
-                </div>
-            </div>
-        </div>
+                )}
+            </section>
+        </>
     );
 }
 

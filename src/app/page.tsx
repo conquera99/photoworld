@@ -27,62 +27,79 @@ function HomeContent() {
     }, []);
 
     return (
-        <div>
-            <div
-                className="cover"
-                style={{ backgroundImage: `url(${baseURL}public/cover/cover.jpg)` }}
-            />
-
+        <>
             <Navigation />
-            <div className="content">
-                <h1>Conquera99 Photoworld</h1>
-                <h5>
-                    &quot;Shot a moment that has a story and make people happy as it sees a real
-                    picture&quot;
-                </h5>
 
-                <Modal
-                    centered
-                    open={!!modalId}
-                    onCancel={() => router.push('/')}
-                    footer={null}
-                    styles={{ body: { padding: 0 } }}
-                >
-                    {modalId && <Picture id={modalId} />}
-                </Modal>
+            <section className="hero">
+                <div
+                    className="hero-bg"
+                    style={{ backgroundImage: `url(${baseURL}public/cover/cover.jpg)` }}
+                />
+                <div className="hero-overlay" />
+                <div className="hero-content">
+                    <p className="hero-subtitle animate-fade-in-up">Photography Portfolio</p>
+                    <h1 className="hero-title animate-fade-in-up delay-200">Capturing Moments</h1>
+                    <p className="hero-description animate-fade-in-up delay-300">
+                        Every photograph tells a story. A frozen moment in time that evokes emotion
+                        and preserves memories forever.
+                    </p>
+                </div>
+                <div className="hero-scroll animate-fade-in delay-600">
+                    <span>Scroll</span>
+                    <div className="hero-scroll-line" />
+                </div>
+            </section>
 
-                <div style={{ marginTop: '5%' }}>
-                    <h3>Latest Pics</h3>
-                    <br />
+            <Modal
+                centered
+                open={!!modalId}
+                onCancel={() => router.push('/')}
+                footer={null}
+                styles={{ body: { padding: 0, background: 'transparent' } }}
+                width={900}
+                closable={false}
+            >
+                {modalId && <Picture id={modalId} />}
+            </Modal>
+
+            <section className="section">
+                <div className="section-header">
+                    <p className="section-label animate-fade-in-up">Portfolio</p>
+                    <h2 className="section-title animate-fade-in-up delay-100">Latest Work</h2>
+                </div>
+
+                {images.length > 0 && (
                     <Masonry
-                        breakpointCols={{
-                            default: 4,
-                            1100: 3,
-                            700: 2,
-                            500: 1,
-                        }}
-                        className="my-masonry-grid"
-                        columnClassName="my-masonry-grid_column"
+                        breakpointCols={{ default: 4, 1100: 3, 700: 2, 500: 1 }}
+                        className="masonry-grid"
+                        columnClassName="masonry-column"
                     >
                         {images.map((item) => (
-                            <Link key={item.pic_id} href={`/?id=${item.pic_id}`}>
-                                <LazyLoadImage
-                                    style={{ width: '100%', marginBottom: 20 }}
-                                    delayTime={0}
-                                    threshold={100}
-                                    alt={item.pic_title}
-                                    crossOrigin="anonymous"
-                                    effect="blur"
-                                    className="img-card img-card-hover"
-                                    placeholderSrc={`${baseURL}${item.pic_image}-thumb.jpeg`}
-                                    src={`${baseURL}${item.pic_image}-comp.jpeg`}
-                                />
-                            </Link>
+                            <div key={item.pic_id} className="masonry-item">
+                                <Link href={`/?id=${item.pic_id}`}>
+                                    <LazyLoadImage
+                                        alt={item.pic_title}
+                                        delayTime={0}
+                                        threshold={100}
+                                        crossOrigin="anonymous"
+                                        effect="blur"
+                                        placeholderSrc={`${baseURL}${item.pic_image}-thumb.jpeg`}
+                                        src={`${baseURL}${item.pic_image}-comp.jpeg`}
+                                    />
+                                    <div className="masonry-item-overlay">
+                                        <span className="masonry-item-title">{item.pic_title}</span>
+                                    </div>
+                                </Link>
+                            </div>
                         ))}
                     </Masonry>
-                </div>
-            </div>
-        </div>
+                )}
+            </section>
+
+            <footer className="footer">
+                &copy; {new Date().getFullYear()} Conquera99 Photoworld
+            </footer>
+        </>
     );
 }
 

@@ -1,4 +1,5 @@
-import { Avatar } from 'antd';
+'use client';
+
 import {
     InstagramOutlined,
     FacebookOutlined,
@@ -10,39 +11,44 @@ import { baseURL } from 'utils/constant';
 
 export default function About() {
     return (
-        <div>
-            <div
-                className="cover"
-                style={{ backgroundImage: `url(${baseURL}public/cover/cover.jpg)` }}
-            />
-
+        <>
             <Navigation />
-            <div className="content">
-                <Avatar size={128} src={`${baseURL}public/profile.jpg`} />
 
-                <div className="bio">
-                    <h2>Benny</h2>
+            <main className="about-page">
+                <img
+                    className="about-avatar"
+                    src={`${baseURL}public/profile.jpg`}
+                    alt="Photographer"
+                />
 
-                    <br />
-                    <br />
-                    <br />
-                    <h4>Find me at:</h4>
-                    <div className="social-media">
-                        <a href="https://instagram.com/conquera99" rel="noreferrer" target="_blank">
-                            <InstagramOutlined className="instagram" />
-                        </a>
-                        <a href="https://facebook.com/conquera99" rel="noreferrer" target="_blank">
-                            <FacebookOutlined className="facebook" />
-                        </a>
-                        <a href="https://twitter.com/conquera99" rel="noreferrer" target="_blank">
-                            <TwitterOutlined className="twitter" />
-                        </a>
-                        <a href="https://github.com/conquera99" rel="noreferrer" target="_blank">
-                            <GithubOutlined className="github" />
-                        </a>
-                    </div>
+                <h1 className="about-name">Benny</h1>
+                <p className="about-role">Photographer</p>
+
+                <p className="about-bio">
+                    Passionate about capturing fleeting moments and transforming them into timeless
+                    stories. Every frame is an opportunity to preserve beauty, emotion, and the
+                    essence of life.
+                </p>
+
+                <div className="about-social">
+                    <a href="https://instagram.com/conquera99" rel="noreferrer" target="_blank">
+                        <InstagramOutlined />
+                    </a>
+                    <a href="https://facebook.com/conquera99" rel="noreferrer" target="_blank">
+                        <FacebookOutlined />
+                    </a>
+                    <a href="https://twitter.com/conquera99" rel="noreferrer" target="_blank">
+                        <TwitterOutlined />
+                    </a>
+                    <a href="https://github.com/conquera99" rel="noreferrer" target="_blank">
+                        <GithubOutlined />
+                    </a>
                 </div>
-            </div>
-        </div>
+            </main>
+
+            <footer className="footer">
+                &copy; {new Date().getFullYear()} Conquera99 Photoworld
+            </footer>
+        </>
     );
 }
