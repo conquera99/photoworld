@@ -2,7 +2,7 @@ const purgecss = [
 	'@fullhuman/postcss-purgecss',
 	{
 		// Specify the paths to all of the template files in your project
-		content: ['./src/pages/**/*.{js,jsx,ts,tsx}', './src/components/**/*.{js,jsx,ts,tsx}'],
+		content: ['./src/app/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}', './src/modules/**/*.{ts,tsx}'],
 
 		// This is the function used to extract class names from your templates
 		defaultExtractor: (content) => {

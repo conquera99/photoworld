@@ -1,0 +1,36 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id       String @id @default(cuid())
+    username String @unique
+    password String
+}
+
+model Category {
+    categoryName   String    @id @map("category_name")
+    categoryStatus Boolean   @default(true) @map("category_status")
+    pictures       Picture[]
+
+    @@map("categories")
+}
+
+model Picture {
+    id              String   @id @default(cuid())
+    picTitle        String   @map("pic_title")
+    picDesc         String?  @map("pic_desc")
+    picCategoryName String   @map("pic_category_name")
+    category        Category @relation(fields: [picCategoryName], references: [categoryName])
+    picImage        String?  @map("pic_image")
+    picExt          String?  @map("pic_ext")
+    picStatus       Boolean  @default(true) @map("pic_status")
+    picCreateDate   DateTime @default(now()) @map("pic_create_date")
+
+    @@map("pictures")
+}

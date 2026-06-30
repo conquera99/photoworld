@@ -33,3 +33,4 @@ yarn-error.log*
 # package
 yarn.lock
 package-lock.json
+/src/generated/prisma
